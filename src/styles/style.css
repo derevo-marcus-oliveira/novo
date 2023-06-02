@@ -1,6 +1,10 @@
+.link-card {
+    text-decoration: none;
+}
 
 .home .btn-search i {
     font-size: 1.4em;
+    
 }
 
 .card {    
@@ -10,6 +14,10 @@
 .card:hover {
     border: 1px solid;
     cursor: pointer;
+}
+
+.card img {
+    height: 400px
 }
 
 .a {

@@ -1,6 +1,5 @@
 
 import Carousel from "../Components/Carousel";
-import { Navigate } from "react-router-dom";
 
 function Home() {    
     return (

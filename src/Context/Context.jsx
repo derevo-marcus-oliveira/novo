@@ -13,11 +13,11 @@ export default  function Provider({ children }) {
         const inicialBuscaEnums = async() => {
             await axios.get("http://localhost:4003/BuscarEnum")
             .then((response) => {
-                debugger
+                
                 setEnums(response.data)
             })
             .catch((error) => {
-                debugger
+                
                 console.log(error)
             });
         }
@@ -38,14 +38,33 @@ export default  function Provider({ children }) {
 
     const BuscaDados = async ( params ) => {
         debugger
-        await axios({
-            url : "http://localhost:4003/Buscar",
+        params
+        await axios("http://localhost:4003/Buscar", {
             method: "GET",
-            data : params,
             headers: { 'Content-Type': 'application/json' }
         })
         .then((response) => {   
-                    debugger     
+
+            if (params.id) {
+                console.log(response.data.filter(item => item.id.search(params.id) ))
+            }
+
+            if (params.tipo) {
+                console.log(response.data.filter(item => item.tipo.search(params.tipo) ))
+            }
+
+            if (params.nome) {
+                console.log(response.data.filter(item => item.nome.search(params.nome) ))
+            }
+
+            if (params.marca) {
+                console.log(response.data.filter(item => item.marca.search(params.marca) ))
+            }
+
+            if (params.modelo) {
+                console.log(response.data.filter(item => item.modelo.search(params.modelo) ))
+            }
+
             setDados(response.data)
         })
         .catch((error) => {

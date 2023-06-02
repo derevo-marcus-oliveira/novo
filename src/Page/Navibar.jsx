@@ -7,10 +7,6 @@ export default function Navbar() {
 
     const [enums, dados, BuscaDados] = useContext(DataContext);
 
-    // useEffect(() =>  {
-    //     setContext(["Placa de Video"])
-    // }, [setContext])
-
     return (
         <>
             <nav className="navbar navbar-expand-lg bg-body-tertiary bg-dark " data-bs-theme="dark">

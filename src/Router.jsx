@@ -4,6 +4,7 @@ import Provider from './Context/Context'
 import Home from './Page/Home'
 import Navbar from "./Page/Navibar";
 import Itens from "./Page/Itens";
+import Detalhe from "./Page/Detalhe";
 
 const Rotas = () => {
     return (
@@ -12,7 +13,8 @@ const Rotas = () => {
                 <Routes>
                     <Route path="/" element={<Navbar />}>
                         <Route path="/" element={<Home />}></Route>
-                        <Route path="categoria/:tipo" element={<Itens />}></Route>
+                        <Route path="categoria/:tipo" element={<Itens />} action={()=> {debugger}} ></Route>
+                        <Route path="detalhe/:id" element={<Detalhe />}></Route>
 
                     </Route>
                 </Routes>

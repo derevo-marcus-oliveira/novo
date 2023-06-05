@@ -14,6 +14,7 @@ const Rotas = () => {
                     <Route path="/" element={<Navbar />}>
                         <Route path="/" element={<Home />}></Route>
                         <Route path="categoria/:tipo" element={<Itens />} action={()=> {debugger}} ></Route>
+                        <Route path="/categoria/:tipo" element={<Itens tipo />} action={()=> {debugger}} ></Route>
                         <Route path="detalhe/:id" element={<Detalhe />}></Route>
 
                     </Route>

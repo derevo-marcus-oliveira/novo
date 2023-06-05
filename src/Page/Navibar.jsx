@@ -1,11 +1,13 @@
-import { useContext, useEffect } from "react";
-import { Form, Link, Outlet } from "react-router-dom";
+import { useContext, useEffect, useState } from "react";
+import { Form, Link, Outlet, redirect } from "react-router-dom";
 
 import { DataContext } from "../Context/Context";
+import Itens from "./Itens";
 
 export default function Navbar() {
 
-    const [enums, dados, BuscaDados] = useContext(DataContext);
+    const [enums] = useContext(DataContext);
+    const [text, setText] = useState("")
 
     return (
         <>
@@ -30,9 +32,9 @@ export default function Navbar() {
                                 </ul>
                             </li>
                         </ul>
-                        <form className="d-flex" role="search">
-                            <input className="form-control me-2" type="search" placeholder="Search" aria-label="Search" />
-                            <button className="btn btn-outline-success" type="submit">Search</button>
+                        <form action={"/categoria/"+text} className="d-flex" role="search">
+                            <input className="form-control me-2" type="search" placeholder="Search" aria-label="Search" onChange={(e) => {setText(e.target.value)}} />
+                            <button className="btn btn-outline-success" type="submit" >Search</button>
                         </form>
                     </div>
                 </div>

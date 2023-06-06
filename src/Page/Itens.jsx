@@ -1,42 +1,69 @@
-import React, { useContext, useEffect } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { DataContext } from "../Context/Context";
 import { useParams, useMatches, useResolvedPath } from 'react-router-dom';
 import Card from '../Components/Card';
+import Offcanvas from '../Components/Offcanvas';
 
-export default function Itens() {
-
+export default function Itens( {itens} ) {
+debugger
+    const [item, setItem] = useState([])
     var data = []
-    debugger
+    
     const path = useParams()
     const path1 = useResolvedPath()
+
+    
 
     const [enums, dados, BuscaDados] = useContext(DataContext);
 
     useEffect(()=>{
-        data = []
-        
+        BuscaDados();        
     }, [])
 
     if (path.tipo) {
+        debugger
         var re = new RegExp(path.tipo, 'i')
-        dados.forEach(element => {
+        if(re.source.split(',').length > 1){
+           
+            for(var i = 0; i < re.source.split(',').length; i++){
+                
+                dados.forEach(element => {
 
-            if (element.tipo.search(re) != -1) {
-                data.push(element)
+                    if (element.tipo.search(re.source.split(',')[i]) != -1) {
+                        data.push(element)
+                    }
+                    else if (element.nome.search(re.source.split(',')[i]) != -1) {
+                        data.push(element)
+                    }
+                    else if (element.marca.search(re.source.split(',')[i]) != -1) {
+                        data.push(element)
+        
+                    }
+                    else if (element.modelo.search(re.source.split(',')[i]) != -1) {
+                        data.push(element)
+                    }
+                });
             }
-            else if (element.nome.search(re) != -1) {
-                data.push(element)
-            }
-            else if (element.marca.search(re) != -1) {
-                data.push(element)
+        }
+        else{
+            dados.forEach(element => {
 
-            }
-            else if (element.modelo.search(re) != -1) {
-                data.push(element)
-            }
-        });
-
-        console.log(data)
+                if (element.tipo.search(re) != -1) {
+                    data.push(element)
+                }
+                else if (element.nome.search(re) != -1) {
+                    data.push(element)
+                }
+                else if (element.marca.search(re) != -1) {
+                    data.push(element)
+    
+                }
+                else if (element.modelo.search(re) != -1) {
+                    data.push(element)
+                }
+            });
+        }
+        
     }
 
     return (
@@ -58,7 +85,7 @@ export default function Itens() {
                         </button>
                     </div>
 
-                    {/* <Offcanvas type={arr.tipo} dados={arr.Dados}/> */}
+                    <Offcanvas type={path.tipo} dados={data}/>
                 </div>
             </div>
             <div className="row">

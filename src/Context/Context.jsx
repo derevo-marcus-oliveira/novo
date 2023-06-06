@@ -36,14 +36,14 @@ export default function Provider({ children }) {
     }, []);
 
 
-    async function BuscaDados () {
-debugger
+    async function BuscaDados() {
+
         await axios("http://localhost:4003/Buscar", {
             method: "GET",
             headers: { 'Content-Type': 'application/json' }
         })
-            .then((response) => { 
-                debugger               
+            .then((response) => {
+                
                 setDados(response.data)
             })
             .catch((error) => {

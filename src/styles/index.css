@@ -1,7 +1,23 @@
 * {
     
 }
+body {
+    background-color: #f1ecec;
+}
+    
+.container {
+    background-color: #ffffff;
+}
 
+.carousel-control-prev-icon {
+    background-color: black ;
+    border-radius: 20%;
+}
+
+.carousel-control-next-icon {
+    background-color: black ;
+    border-radius: 20%;
+}
 
 .link-card {
     text-decoration: none;
@@ -124,4 +140,75 @@
     .view-P {
         height: 190px;
     }  
+}
+
+.wrapper{
+  display: flex;
+  max-width: 1200px;
+  position: relative;
+}
+.wrapper i{
+  top: 50%;
+  height: 44px;
+  width: 44px;
+  color: #343F4F;
+  cursor: pointer;
+  font-size: 2.15rem;
+  position: absolute;
+  text-align: center;
+  line-height: 44px;
+  background: #fff;
+  border-radius: 50%;
+  transform: translateY(-50%);
+  transition: transform 0.1s linear;
+}
+.wrapper i:active{
+  transform: translateY(-50%) scale(0.9);
+}
+.wrapper i:hover{
+    background: #f2f2f2;
+}
+.wrapper i:first-child{
+  left: -22px;
+  display: none;
+}
+.wrapper i:last-child{
+  right: -22px;
+}
+.wrapper .carousell{
+    display: flex;
+  font-size: 0px;
+  cursor: pointer;
+  overflow: hidden;
+  white-space: nowrap;
+  scroll-behavior: smooth;
+}
+.carousell.dragging{
+  cursor: grab;
+  scroll-behavior: auto;
+}
+.carousell.dragging .card{
+  pointer-events: none;
+}
+.carousell .card{
+  height: 340px;
+  object-fit: cover;
+  user-select: none;
+  margin: 14px;
+  width: calc(100% / 3);
+}
+.carousell .card:first-child{
+  margin-left: 0px;
+}
+
+@media screen and (max-width: 900px) {
+  .carousell .card{
+    width: calc(100% / 2);
+  }
+}
+
+@media screen and (max-width: 550px) {
+  .carousell .card{
+    width: 100%;
+  }
 }

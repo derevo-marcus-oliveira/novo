@@ -5,7 +5,7 @@ import Card from '../Components/Card';
 import Offcanvas from '../Components/Offcanvas';
 
 export default function Itens( {itens} ) {
-debugger
+
     const [item, setItem] = useState([])
     var data = []
     
@@ -21,7 +21,7 @@ debugger
     }, [])
 
     if (path.tipo) {
-        debugger
+        
         var re = new RegExp(path.tipo, 'i')
         if(re.source.split(',').length > 1){
            

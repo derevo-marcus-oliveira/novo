@@ -4,6 +4,8 @@ import { Form, Link, Outlet, redirect } from "react-router-dom";
 import { DataContext } from "../Context/Context";
 import Itens from "./Itens";
 
+import Modal from '../Components/Modal';
+
 export default function Navbar() {
 
     const [enums] = useContext(DataContext);
@@ -19,6 +21,7 @@ export default function Navbar() {
                     </button>
                     <div className="collapse navbar-collapse" id="navbarSupportedContent">
                         <ul className="navbar-nav me-auto mb-2 mb-lg-0">
+                           
                             <li className="nav-item dropdown">
                                 <a className="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false" style={{ fontSize: "1.25em" }}>
                                     Categoria
@@ -26,19 +29,23 @@ export default function Navbar() {
                                 <ul className="dropdown-menu">
                                     {enums.map((item, id) => (
                                         <li key={id}>
-                                            <Link className="dropdown-item" to={"categoria/"+item.tipo}>{item.descricao}</Link>
+                                            <Link className="dropdown-item" to={"categoria/" + item.tipo}>{item.descricao}</Link>
                                         </li>
                                     ))}
                                 </ul>
                             </li>
+                            <li className="nav-item" >
+                                <button style={{ fontSize: "1.25em", color: "rgb(248, 249, 250)", textDecoration: "none", fontWeight: 600}} type="button" className="btn btn-link"  data-bs-toggle="modal" data-bs-target="#exampleModal">Comparar</button>
+                            </li>
                         </ul>
-                        <form action={"/categoria/"+text} className="d-flex" role="search">
-                            <input className="form-control me-2" type="search" placeholder="Search" aria-label="Search" onChange={(e) => {setText(e.target.value)}} />
+                        <form action={"/categoria/" + text} className="d-flex" role="search">
+                            <input className="form-control me-2" type="search" placeholder="Search" aria-label="Search" onChange={(e) => { setText(e.target.value) }} />
                             <button className="btn btn-outline-success" type="submit" >Search</button>
                         </form>
                     </div>
                 </div>
             </nav>
+            <Modal/>
             <Outlet />
         </>
     )

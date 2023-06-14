@@ -5,6 +5,7 @@ body {
     
 .container {
     background-color: #ffffff;
+    overflow-x: hidden;
 }
 
 .carousel-control-prev-icon {
@@ -36,7 +37,7 @@ body {
 }
 
 .card img {
-    height: 400px
+    height: 400px;
 }
 
 .a {
@@ -67,6 +68,10 @@ body {
 
 .progress{
     margin: 5px 0;
+}
+
+.tabela {
+    border: 1px solid #000;
 }
 
 .qualquer {

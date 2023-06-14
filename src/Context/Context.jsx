@@ -7,6 +7,7 @@ export default function Provider({ children }) {
 
     const [dados, setDados] = useState([])
     const [enums, setEnums] = useState([])
+    const [itens, setItem] = useState([])
 
     useEffect(() => {
         const inicialBuscaEnums = async () => {
@@ -58,7 +59,7 @@ export default function Provider({ children }) {
 
 
     return (
-        <DataContext.Provider value={[enums, dados, BuscaDados]}>
+        <DataContext.Provider value={[enums, dados, BuscaDados, itens, setItem]}>
             {children}
         </DataContext.Provider>
     )

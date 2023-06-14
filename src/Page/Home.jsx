@@ -44,19 +44,7 @@ function Home() {
                         </div>    
                     </div>                               
                 </div> 
-            </div>                   
-            <div className="row">
-                <div className="p-5 text-center">
-                    {/* Posso Escrever algo */}
-                </div>
-            </div>
-                       
-            <div className="row">
-                <div className="p-5 text-center">
-                    {/* Posso Escrever algo */}
-                </div>
-            </div>
-            
+            </div> 
         </div>
     )
 }

@@ -1,7 +1,7 @@
 
 
 
-function Carousel({ id, img }) {
+function Carousel({ id, img, style }) {
     
     return (
 
@@ -13,12 +13,12 @@ function Carousel({ id, img }) {
 
                         {img.map((p, id) => (
                             (id == 0) ? (
-                                <div className="carousel-item active"  data-bs-interval="2000" key={id}>
-                                    <img src={p.url} className="d-block w-100" alt="..." />
+                                <div  className="carousel-item active"  data-bs-interval="2000" key={id}>
+                                    <img style={{height: style}} src={p.url} className="d-block w-100" alt="..." />
                                 </div>
                             ) : (
                                 <div className="carousel-item"  data-bs-interval="2000" key={id}>
-                                    <img src={p.url} className="d-block w-100" alt="..." />
+                                    <img style={{height: style}} src={p.url} className="d-block w-100" alt="..." />
                                 </div>
                             )
                         ))}

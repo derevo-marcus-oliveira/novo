@@ -1,18 +1,17 @@
 import { useContext, useEffect, useState } from "react";
-import { Form, Link, useNavigate , redirect } from "react-router-dom";
+import { Form, Link, useNavigate, redirect } from "react-router-dom";
 
 import { DataContext } from "../Context/Context";
 
 
 export default function Modal({ title, conteudo }) {
-    debugger
-    const [enums, dados, BuscaDados] = useContext(DataContext);
+
+    const [enums, dados, BuscaDados, itens, setItem] = useContext(DataContext);
     const [list, setList] = useState([])
-    const [itens, setItem] = useState([])
     const navigate = useNavigate();
 
-    $("#exampleModal").on("hide.bs.modal", () => {
-        
+    $("#exampleModal").on("shown.bs.modal", () => {
+
         setList([])
         setItem([])
     })
@@ -29,8 +28,8 @@ export default function Modal({ title, conteudo }) {
                     <div className="modal-body">
                         <div className='row'>
                             <div className="col-2">
-                                <div className="dropdown">
-                                    <button className="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                <div className="dropdown"  >
+                                    <button className="btn btn-secondary dropdown-toggle" style={{ width: "100%" }} type="button" data-bs-toggle="dropdown" aria-expanded="false">
                                         Categoria
                                     </button>
                                     <ul className="dropdown-menu">
@@ -54,29 +53,32 @@ export default function Modal({ title, conteudo }) {
                         </div>
                         <div className="row">
                             <div className="p-3 text-center">
-                                <h5>Selecione dois itens do mesmo tipo para comparar</h5>
+                                
                             </div>
                         </div>
                         <div className='row'>
                             <div className="col-8">
+                                <div className="card" style={{ width: "45.5rem" }}>
+                                    <div className="card-header text-center">
+                                        <h5>Selecione dois itens</h5>
+                                    </div>
+                                </div>
                                 <div className='row'>
                                     {list.map((d) => (
-                                        <div key={d.id} className="col-4" onClick={() => {
+                                        <div key={d.id} className="col-6" onClick={() => {
 
                                             if (itens.filter((filter) => filter.id == d.id).length == 0) {
 
-                                                if(itens.length < 2){
+                                                if (itens.length < 2) {
 
                                                     setItem([...itens, d])
                                                 }
                                             }
 
                                         }}>
-                                            <div className="card text-bg-info mb-3" style={{ width: "14rem" }}>
-                                                <div className="card-header">{d.tipo}</div>
+                                            <div className="card text-bg-info mb-3" style={{ width: "22rem" }}>
                                                 <div className="card-body">
                                                     <h5 className="card-title">{d.nome}</h5>
-                                                    <p className="card-text">.</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -85,8 +87,8 @@ export default function Modal({ title, conteudo }) {
                             </div>
                             <div className="col-4">
                                 <div className="card" style={{ width: "22rem" }}>
-                                    <div className="card-header">
-                                        Itens
+                                    <div className="card-header text-center">
+                                        <h5>Itens</h5>
                                     </div>
                                     <ul className="list-group list-group-flush">
                                         {itens.map((i) => (
@@ -100,7 +102,7 @@ export default function Modal({ title, conteudo }) {
                     </div>
                     <div className="modal-footer">
                         <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                        <button type="button" className="btn btn-primary" data-bs-dismiss="modal" onClick={() => navigate("/")}>Save changes</button>
+                        <button type="button" className="btn btn-primary" data-bs-dismiss="modal" onClick={() => navigate(`/comparar`, itens)}>Save changes</button>
                     </div>
                 </div>
             </div>

@@ -1,61 +1,84 @@
 import React, { useContext, useEffect, useState } from 'react'
 import { DataContext } from "../Context/Context";
-import { useParams, useMatches, useResolvedPath } from 'react-router-dom';
-import Card from '../Components/Card';
-import Offcanvas from '../Components/Offcanvas';
 
-import Modal from '../Components/Modal';
+import Carousel from "../Components/Carousel";
 
 export default function CompararItens() {
-
-    const [enums] = useContext(DataContext);
+    debugger
+    const [enums, dados, BuscaDados, itens, setItem] = useContext(DataContext);
     const [text, setText] = useState("")
 
+    var ajuste = [];
+
+    function juncao() {
+        debugger
+        itens.forEach(element => {
+
+            element.especificacoes.forEach(especificacao => {
+                if (ajuste.filter(item => item.especificacao == especificacao.especificacao) == 0) {
+                    ajuste.push({
+                        especificacao: especificacao.especificacao
+                    })
+                }
+            })
+
+        });
+
+        console.log(ajuste);
+    }
+    juncao();
     return (
 
         <div>
-            <button type="button" className="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                aunch demo modal
-            </button>
+            <div className='container '>
+                <div className='row'>
+                    <div className='view-M col-2' >
 
+                    </div>
+                    <div className='view-M col-5' >
+                        <div className="p-3 text-center">
+                            <h5>{itens[0].nome}</h5>
+                        </div>
+                        <Carousel id={"view1"} img={itens[0].imagens} style={"405px"} />
 
-            <div class="modal modal-dialog modal-xl fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                <div class="modal-dialog">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h1 class="modal-title fs-5" id="exampleModalLabel">Comparar</h1>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div className='view-M col-5'>
+                        <div className="p-3 text-center">
+                            <h5>{itens[1].nome}</h5>
                         </div>
-                        <div class="modal-body">
-                            <div className='row'>
-                                <div className="col-2">
-                                    <div class="dropdown">
-                                        <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                            Dropdown button
-                                        </button>
-                                        <ul class="dropdown-menu">
-                                            <li><a class="dropdown-item" href="#">Action</a></li>
-                                            <li><a class="dropdown-item" href="#">Another action</a></li>
-                                            <li><a class="dropdown-item" href="#">Something else here</a></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                                <div className="col-10">
-                                    <form action={"/categoria/" + text} className="d-flex" role="search">
-                                        <input className="form-control me-2" type="search" placeholder="Search" aria-label="Search" onChange={(e) => { setText(e.target.value) }} />
-                                        <button className="btn btn-outline-success" type="submit" >Search</button>
-                                    </form>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                            <button type="button" class="btn btn-primary">Save changes</button>
-                        </div>
+                        <Carousel id={"view2"} img={itens[1].imagens} style={"405px"} />
                     </div>
                 </div>
+                <div className="row">
+                    <div className="p-5 text-center"></div>
+                    <div className="p-5 text-center"></div>
+                </div>
+                {ajuste.map((a, id) => (
+                    <div className="row gy-5 text-justify" key={id}>
+                        <div className="col-2 tabela">
+                            <div className="p-3">{a.especificacao}</div>
+                        </div>
+                        <div className="col-5 tabela">
+                            <div className="p-3">
+                                {
+                                    (itens[0].especificacoes.filter(item => item.especificacao == a.especificacao).length > 0) ?
+                                        itens[0].especificacoes.filter(item => item.especificacao == a.especificacao)[0].especificacao_descricao : ""
+                                }
+                            </div>
+                        </div>
+                        <div className="col-5 tabela">
+                            <div className="p-3">
+                                {
+                                    (itens[1].especificacoes.filter(item => item.especificacao == a.especificacao).length > 0) ?
+                                        itens[1].especificacoes.filter(item => item.especificacao == a.especificacao)[0].especificacao_descricao : ""
+                                }
+                            </div>
+                        </div>
+                    </div>
+                ))}
+
             </div>
-        </div>
+        </div >
 
     )
 }

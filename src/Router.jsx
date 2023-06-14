@@ -16,7 +16,7 @@ const Rotas = () => {
                         <Route path="/" element={<Home />}></Route>
                         <Route path="categoria/:tipo" element={<Itens />}></Route>
                         <Route path="detalhe/:id" element={<Detalhe />}></Route>
-                        <Route path="comparar" element={<CompararItens />}></Route>
+                        <Route path="comparar" element={<CompararItens />} ></Route>
 
 
                     </Route>

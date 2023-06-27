@@ -182,8 +182,6 @@ export default function Detalhe() {
                                         <CardSimples props={dados[2]}/>
                                         <CardSimples props={dados[3]}/>
                                         <CardSimples props={dados[4]}/>
-                                        <CardSimples props={dados[5]}/>
-                                        <CardSimples props={dados[6]}/>
                                 </div>
                                 <i id="right" class="bi bi-arrow-right-circle"></i>
                             </div>

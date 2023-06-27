@@ -10,6 +10,8 @@ export default function CompararItens() {
 
     var ajuste = [];
 
+    console.log(itens);
+
     function juncao() {
         debugger
         itens.forEach(element => {
@@ -23,8 +25,6 @@ export default function CompararItens() {
             })
 
         });
-
-        console.log(ajuste);
     }
     juncao();
     return (
@@ -53,7 +53,11 @@ export default function CompararItens() {
                     <div className="p-5 text-center"></div>
                     <div className="p-5 text-center"></div>
                 </div>
-                {ajuste.map((a, id) => (
+                {ajuste.map((a, id) => {
+                
+                console.log(itens[0].especificacoes.filter(item => item.especificacao == a.especificacao));
+                console.log(itens[1].especificacoes.filter(item => item.especificacao == a.especificacao));
+                return (
                     <div className="row gy-5 text-justify" key={id}>
                         <div className="col-2 tabela">
                             <div className="p-3">{a.especificacao}</div>
@@ -75,7 +79,7 @@ export default function CompararItens() {
                             </div>
                         </div>
                     </div>
-                ))}
+                )})}
 
             </div>
         </div >

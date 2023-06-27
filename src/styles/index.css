@@ -83,6 +83,34 @@ body {
     margin: 6px 0 ;
 }
 
+.img1 {
+    background-image: url("https://cdn.tecmasters.com.br/wp-content/uploads/2023/06/Ilustracao-do-Windows-Sistema-operacional-da-Microsoft.jpg");
+    
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.img2 {
+    background-image: url("https://cdn.tecmasters.com.br/wp-content/uploads/2023/06/ChatGPT-para-Windows-antigos.png");
+    
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.img3 {
+    background-image: url("https://cdn.tecmasters.com.br/wp-content/uploads/2023/06/Nvidia-GeForce-RTX.jpg");
+    
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.img4 {
+    background-image: url("https://cdn.tecmasters.com.br/wp-content/uploads/2023/06/futuristic-ai-technology-microchip-advanced-innovation-digital-remix.jpg");
+    
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
 @media only screen and (min-width: 540px) {
     .view-G {
         height: 440px;
